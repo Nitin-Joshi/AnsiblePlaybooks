@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: ssh
+  gather_facts: no
+  vars:
+          spath: /home/nitinjoshi/Distros/package/jdk-8u241-linux-x64.tar.gz
+          dpath: Distros/
+  tasks: 
+        - name: copying the file
+          copy:
+                src={{ spath }}
+                dest={{ dpath }}
+                mode=0777

@@ -1,0 +1,18 @@
+---
+- hosts: QA
+  connection: ssh
+  tasks:
+  - name: udpate package
+    apt: update_cache=yes
+    register: updatelog
+  - debug: msg={{ updatelog }}
+  - name: install nginx on target
+    apt: name=nginx state=latest 
+    register: log
+  - debug: var=log 
+  - name: deploy html files to server folder
+    copy: src=index.html dest=/var/www/html/
+    notify: restart nginx   
+  handlers:
+  - name: restart nginx
+    service: name=nginx state=restarted

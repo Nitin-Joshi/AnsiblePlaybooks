@@ -1,0 +1,12 @@
+---
+- hosts: all
+#gather_facts true is very important for when condition
+#as when uses data pulled with gather_facts
+  gather_facts: yes 
+  tasks:
+  - name: ubuntu refresh
+    command: apt-get update
+    when: ansible_os_family == 'Debian'
+  - name: centos refresh
+    command: yum update
+    when: ansible_os_family == 'Redhat'

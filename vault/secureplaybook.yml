@@ -1,0 +1,7 @@
+---
+- hosts: all
+  vars_files:
+  - passwd.yml
+  tasks:  
+  - name: view password
+    command: echo Password is  {{ passwd_server }}

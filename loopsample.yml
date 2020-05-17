@@ -1,0 +1,10 @@
+---
+- hosts: all
+  connection: ssh
+  tasks:
+          - name: create users
+            user: name={{item}} state=absent
+            with_items:
+            - user1_playbook
+            - user2_playbook
+            - user3_playbook

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  connection: ssh
+  gather_facts: no
+  tasks:
+          - name: installing git package 
+            apt:
+                  name: git
+                  state: present
+                  update_cache: yes
