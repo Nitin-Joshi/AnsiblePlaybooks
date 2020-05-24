@@ -1,0 +1,11 @@
+---
+- hosts: all
+  user: root
+  connection: ssh
+  gather_facts: no
+  vars_files:
+  - variables/vars.yml
+  tasks:
+  - include: tasks/tasks.yml
+  handlers:
+  - include: handlers/handler.yml

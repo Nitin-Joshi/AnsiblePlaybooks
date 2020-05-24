@@ -12,7 +12,7 @@
   - debug: var=log 
   - name: deploy html files to server folder
     copy: src=index.html dest=/var/www/html/
-    notify: restart nginx   
+    notify: restart_nginx
   handlers:
-  - name: restart nginx
+  - name: restart_nginx
     service: name=nginx state=restarted

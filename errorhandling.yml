@@ -1,0 +1,14 @@
+---
+- hosts: all
+  user: root
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: package install
+    apt: name=wget state=present
+  - name: wrong command for error handling, will skip the error
+    raw: cats /root/temp/pkg.logs
+    ignore_errors: yes
+  - name: check version
+    raw: apt show wget > /root/temp/pkg.logs
+

@@ -1,0 +1,14 @@
+---
+- hosts: all
+  user: root
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: package install
+    apt: name=wget state=present
+    tags:
+    - package
+  - name: check version
+    raw: apt show wget > /root/temp/pkg.logs
+    tags:
+    - chk_version

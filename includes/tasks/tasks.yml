@@ -1,0 +1,5 @@
+- name: installing {{ pkg }} package
+  apt: name={{ pkg }} state=present
+  notify: restartserver
+- name: confirm {{ pkg }} installation
+  command: which {{ pkg }}

@@ -1,0 +1,12 @@
+---
+- hosts: all
+  user: root
+  connection: ssh
+  gather_facts: no
+  vars_prompt:
+  - name: executetasks
+    prompt: enter package name to be installed
+    private: no
+  tasks:
+  - name: installing {{ executetasks }} package
+    apt: name={{ executetasks }} state=present
